@@ -1,1 +1,887 @@
-<!doctype html><html lang="uk"><head><meta charset="utf-8"><title>Trip Sicily May 2026</title></head><body style="font-family:system-ui;max-width:720px;margin:40px auto;padding:20px"><h1>🇺🇦→🇵🇱→🇮🇹 Trip · 14–21.05.2026</h1><p>Bootstrap page — full trip plan is being deployed.</p></body></html>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trip Plan · Київ → Краків → Венеція → Сицилія → Відень · 14–21.05.2026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 140px; }
+  body { font-family: 'Inter', sans-serif; }
+  .day-anchor { scroll-margin-top: 140px; }
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] > summary .chev { transform: rotate(90deg); }
+  .chev { transition: transform .2s; display: inline-block; }
+  .timeline-dot { width: 10px; height: 10px; border-radius: 9999px; background: #0ea5e9; box-shadow: 0 0 0 4px rgba(14,165,233,.15); }
+  .nav-btn { transition: all .15s; }
+  .nav-btn:hover { background: #0ea5e9; color: #fff; }
+  .pill { display:inline-flex; align-items:center; gap:.25rem; padding:.125rem .5rem; border-radius:9999px; font-size:.7rem; font-weight:600; }
+  @media print { .no-print { display: none !important; } body { background: white; } }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+<!-- FIXED HEADER -->
+<header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-slate-200 z-50 no-print">
+  <div class="max-w-6xl mx-auto px-4 py-3">
+    <div class="flex items-center justify-between flex-wrap gap-2">
+      <div>
+        <h1 class="text-sm sm:text-base font-bold text-slate-900">🇺🇦→🇵🇱→🇮🇹→🇦🇹 Trip · 14–21 травня 2026</h1>
+        <p class="text-[10px] sm:text-xs text-slate-500">Віталій + Яна + друзі (Сицилія) · v1</p>
+      </div>
+      <div class="flex gap-1 flex-wrap text-[11px] sm:text-xs">
+        <a href="#overview" class="nav-btn px-2 py-1 rounded-md bg-slate-100 text-slate-700">Огляд</a>
+        <a href="#days" class="nav-btn px-2 py-1 rounded-md bg-slate-100 text-slate-700">Дні</a>
+        <a href="#transport" class="nav-btn px-2 py-1 rounded-md bg-slate-100 text-slate-700">Транспорт</a>
+        <a href="#food" class="nav-btn px-2 py-1 rounded-md bg-slate-100 text-slate-700">Їжа</a>
+        <a href="#hotels" class="nav-btn px-2 py-1 rounded-md bg-slate-100 text-slate-700">Готелі</a>
+        <a href="#beaches" class="nav-btn px-2 py-1 rounded-md bg-slate-100 text-slate-700">Пляжі</a>
+        <a href="#checklist" class="nav-btn px-2 py-1 rounded-md bg-slate-100 text-slate-700">Чекліст</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="pt-28 pb-20 max-w-6xl mx-auto px-4">
+
+<!-- TAB SWITCHER -->
+<div class="flex gap-2 mb-6 no-print">
+  <button id="tab-plan-btn" class="px-4 py-2 rounded-lg font-semibold text-sm bg-sky-600 text-white shadow">📋 План по днях</button>
+  <button id="tab-gantt-btn" class="px-4 py-2 rounded-lg font-semibold text-sm bg-white border border-slate-200 text-slate-700">📊 Гант-діаграма</button>
+</div>
+
+<div id="view-plan">
+
+<!-- OVERVIEW -->
+<section id="overview" class="mb-10">
+  <div class="bg-gradient-to-br from-sky-500 to-indigo-600 text-white rounded-2xl p-6 sm:p-8 shadow-lg">
+    <h2 class="text-2xl sm:text-4xl font-extrabold mb-2">Київ → Краків → Венеція → Сицилія → Відень</h2>
+    <p class="text-sky-100 text-sm sm:text-base mb-4">14–21 травня 2026 · 8 днів · 4 країни · повільний темп з купанням</p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs sm:text-sm">
+      <div class="bg-white/15 rounded-lg p-3"><div class="text-sky-200 text-[10px] uppercase">Мандрівники</div><div class="font-semibold mt-1">Віталій + Яна<br><span class="text-sky-200">+ друзі на Сицилії</span></div></div>
+      <div class="bg-white/15 rounded-lg p-3"><div class="text-sky-200 text-[10px] uppercase">Авто</div><div class="font-semibold mt-1">17–21.05<br><span class="text-sky-200">CTA → PMO</span></div></div>
+      <div class="bg-white/15 rounded-lg p-3"><div class="text-sky-200 text-[10px] uppercase">Поклажа</div><div class="font-semibold mt-1">Рюкзаки<br><span class="text-sky-200">без валіз</span></div></div>
+      <div class="bg-white/15 rounded-lg p-3"><div class="text-sky-200 text-[10px] uppercase">Темп</div><div class="font-semibold mt-1">Повільний<br><span class="text-sky-200">4-5 год/день</span></div></div>
+    </div>
+  </div>
+
+  <!-- Tickets summary -->
+  <div class="mt-6 bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+    <div class="px-5 py-3 border-b border-slate-100 bg-slate-50">
+      <h3 class="font-bold text-slate-900">✈️ Квитки та перельоти</h3>
+    </div>
+    <div class="overflow-x-auto">
+    <table class="w-full text-xs sm:text-sm">
+      <thead class="bg-slate-50 text-slate-600 text-[11px] uppercase">
+        <tr>
+          <th class="px-3 py-2 text-left">Дата</th>
+          <th class="px-3 py-2 text-left">Маршрут</th>
+          <th class="px-3 py-2 text-left">Рейс</th>
+          <th class="px-3 py-2 text-left">Час</th>
+          <th class="px-3 py-2 text-left">Бронь</th>
+          <th class="px-3 py-2 text-left">Deadline</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        <tr><td class="px-3 py-2 font-semibold">14.05 Чт</td><td class="px-3 py-2">Київ → Краків</td><td class="px-3 py-2">Нічний потяг</td><td class="px-3 py-2">прибуття <b>11:20</b></td><td class="px-3 py-2 text-slate-500">—</td><td class="px-3 py-2 text-slate-500">—</td></tr>
+        <tr><td class="px-3 py-2 font-semibold">15.05 Пт</td><td class="px-3 py-2">KRK → Venezia (Treviso)</td><td class="px-3 py-2">Ryanair FR3037</td><td class="px-3 py-2">17:35 → 19:15</td><td class="px-3 py-2 font-mono text-xs">W4V2WQ</td><td class="px-3 py-2 text-rose-600 font-semibold">16:05 @ KRK</td></tr>
+        <tr><td class="px-3 py-2 font-semibold">17.05 Нд</td><td class="px-3 py-2">Venezia (VCE) → Catania</td><td class="px-3 py-2">Wizz W4 6513</td><td class="px-3 py-2">11:15 → 13:05</td><td class="px-3 py-2 font-mono text-xs">YUCC7R</td><td class="px-3 py-2 text-rose-600 font-semibold">09:45 @ VCE</td></tr>
+        <tr><td class="px-3 py-2 font-semibold">21.05 Чт</td><td class="px-3 py-2">Palermo (PMO) → Wien</td><td class="px-3 py-2">Ryanair FR7317</td><td class="px-3 py-2">13:15 → 15:15</td><td class="px-3 py-2 font-mono text-xs">E5E56X</td><td class="px-3 py-2 text-rose-600 font-semibold">11:45 @ PMO</td></tr>
+        <tr class="bg-amber-50"><td class="px-3 py-2 font-semibold">22.05 Пт</td><td class="px-3 py-2">Wien → Жиліна (SK)</td><td class="px-3 py-2">Потяг (ранок)</td><td class="px-3 py-2 text-slate-500">TBD</td><td class="px-3 py-2 text-slate-500">—</td><td class="px-3 py-2 text-slate-500">—</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Critical warnings -->
+  <div class="mt-6 bg-rose-50 border border-rose-200 rounded-xl p-5">
+    <h3 class="font-bold text-rose-900 mb-2">⚠️ Критичні застереження — прочитати до виїзду</h3>
+    <ul class="text-sm text-rose-800 space-y-2 ml-5 list-disc">
+      <li><b>Багаж Ryanair vs Wizz:</b> Wizz (VCE→CTA) дозволяє 40×30×20 безкоштовно. <b>Ryanair (KRK→TSF і PMO→VIE) — тільки 40×25×20</b> під сидіння без Priority. Якщо рюкзак 40×30×20 — на Ryanair його <u>не пропустять без Priority</u> (+15–25€/рейс/особа). Перевір у бронюванні W4V2WQ і E5E56X чи оплачено Priority. Варіанти: (а) дооплатити Priority онлайн заздалегідь (дешевше); (б) взяти рюкзак строго 40×25×20; (в) прийняти ризик і платити на гейті (дорого).</li>
+      <li><b>ZTL на Сицилії:</b> Ортіджа, Таорміна, центр Чефалу, центр Палермо — всі історичні центри закриті для авто. Камери фіксують, штраф 80–180€ приходить через 6–12 міс через прокатну компанію. <b>Правило: паркуй ЗАВЖДИ за межами ZTL на офіційних парковках.</b></li>
+      <li><b>Страховка авто:</b> бери повну (CDW/SCDW + Theft + Tyres/Windows). У сицилійських містах вузькі вулиці з бордюрами, колеса/диски страждають регулярно.</li>
+      <li><b>Готівка:</b> у малих тратторіях Сицилії і вуличній їжі Палермо — кеш. Тримай 100–150€ готівкою.</li>
+    </ul>
+  </div>
+
+  <!-- TBD / open questions -->
+  <div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-5">
+    <h3 class="font-bold text-amber-900 mb-2">🟡 Потребує підтвердження від Віталія</h3>
+    <ul class="text-sm text-amber-800 space-y-1 ml-5 list-disc">
+      <li>Авто на Сицилії — чиє: наше орендоване (як у брифі) чи спільне з друзями / тільки друзів?</li>
+      <li>Точний час і тип потяга Wien → Жиліна 22.05 (ранок о котрій?)</li>
+      <li>Бронь нічного потягу Київ → Краків (клас вагону, місце)</li>
+      <li>Priority на Ryanair (FR3037, FR7317) — оплачено чи ні?</li>
+      <li>Чи забронювали вже конкретні готелі (Венеція, Сіракуза, Таорміна, Чефалу, Відень)?</li>
+    </ul>
+  </div>
+</section>
+
+<!-- DAY BY DAY -->
+<section id="days" class="mb-10">
+  <h2 class="text-2xl font-extrabold text-slate-900 mb-4">📅 День за днем</h2>
+
+  <!-- DAY 1: 14.05 -->
+  <article id="day1" class="day-anchor bg-white border border-slate-200 rounded-xl shadow-sm mb-4 overflow-hidden">
+    <div class="px-5 py-3 bg-gradient-to-r from-slate-600 to-slate-700 text-white">
+      <div class="flex items-baseline justify-between flex-wrap gap-2">
+        <div><span class="text-slate-300 text-xs">День 1</span> <h3 class="text-lg font-bold">Четвер, 14 травня — Київ → Краків</h3></div>
+        <span class="pill bg-white/20">🚂 Нічний потяг</span>
+      </div>
+    </div>
+    <div class="p-5">
+      <div class="space-y-3 text-sm">
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>Увечері</b> — вокзал Київ-Пасажирський, посадка на нічний потяг</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>Нічний перегін</b> — сон у потязі, зарядка телефонів, легка вечеря з собою</div></div>
+      </div>
+      <div class="mt-4 bg-sky-50 border-l-4 border-sky-400 p-3 text-xs rounded">
+        <b>💡 Порада:</b> візьми з собою багато води, перехідник/адаптер для розеток (якщо є), зарядку power bank. На кордоні пасконтроль будять 2×. Припаси паспорти одразу зверху рюкзака.
+      </div>
+    </div>
+  </article>
+
+  <!-- DAY 2: 15.05 -->
+  <article id="day2" class="day-anchor bg-white border border-slate-200 rounded-xl shadow-sm mb-4 overflow-hidden">
+    <div class="px-5 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white">
+      <div class="flex items-baseline justify-between flex-wrap gap-2">
+        <div><span class="text-red-200 text-xs">День 2</span> <h3 class="text-lg font-bold">П'ятниця, 15 травня — Краків 🇵🇱 → Венеція 🇮🇹</h3></div>
+        <span class="pill bg-white/20">~4 год у Кракові · літак 17:35</span>
+      </div>
+    </div>
+    <div class="p-5">
+      <div class="space-y-3 text-sm">
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>11:20</b> — прибуття Kraków Główny</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>11:30–11:50</b> — здача рюкзаків у камеру схову. <b>Варіанти:</b> локери на самому вокзалі (2–6€/добу, обмежена кількість) або Radical Storage / Bounce за 5 хв пішки (20 PLN ≈ 5€ за рюкзак, бронь онлайн)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>12:00–13:30</b> — Старе місто: Rynek Główny (головна площа, найбільша середньовічна площа Європи), Sukiennice (Суконні ряди з сувенірами), Kościół Mariacki (Маріацький костел — всередині олтар Віта Ствоша, кожну годину хейнал з башти)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>13:30–14:30</b> — обід. <b>Рекомендую:</b> <i>Pierogarnia Krakowiacy</i> (Sławkowska 16, смачні пиріжки by locals), <i>U Babci Maliny</i> (Szpitalna 38, класика, недорого), <i>Miód i Wino</i> для середнього чека</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>14:30–15:00</b> — прогулянка до Wawel (королівський замок) + обов'язково <b>obwarzanek</b> з вуличного лотка (~3 PLN), <b>zapiekanka</b> на Plac Nowy у Kazimierz якщо встигаєш</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>15:00</b> — забір рюкзаків → перехід на платформу SKA1</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>15:06 або 15:36</b> — <b>SKA1 train Kraków Główny → Kraków Airport (KRK)</b>, ~17–20 хв, €4.50 (20 PLN) з особи, кожні 30 хв</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>15:30–16:00</b> — в аеропорту (deadline 16:05)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>17:35</b> — ✈️ FR3037 → <b>19:15 Treviso (TSF)</b></div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>19:30</b> — трансфер TSF → Венеція. <b>Рекомендую Barzi Service</b>: €12, 40 хв до Venezia Tronchetto без проміжних зупинок (швидше за ATVO). Альтернатива: ATVO bus 70 хв €12 до Piazzale Roma. Від Tronchetto до Cannaregio — 10 хв пішки або vaporetto 1 зупинка</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>~20:30–21:00</b> — чекін у Cannaregio</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>21:00–23:00</b> — легка вечеря, перший бакаро-крос: <b>Fondamenta della Misericordia</b> у Cannaregio — найкращий локальний аперитив-район у Венеції. <i>Al Timon</i> (Fondamenta dei Ormesini 2754), <i>Vino Vero</i> (Fondamenta Misericordia 2497)</div></div>
+      </div>
+      <div class="mt-4 bg-amber-50 border-l-4 border-amber-400 p-3 text-xs rounded">
+        <b>⚠️ Часовий буфер:</b> 11:20 → 16:05 = 4:45 год. Реально на Старе місто 3 год, плюс 30 хв схов, 25 хв SKA1 до KRK, 30 хв запасу. Темп розслаблений, але не затримуйся на Wawel (заходити всередину не встигнеш). Kazimierz — тільки якщо обід швидкий.
+      </div>
+      <div class="mt-3 bg-emerald-50 border-l-4 border-emerald-400 p-3 text-xs rounded">
+        <b>🍽️ Must-eat у Кракові:</b> pierogi (ruskie, z mięsem), żurek, obwarzanek krakowski, zapiekanka
+      </div>
+      <div class="mt-3">
+        <iframe class="w-full rounded-lg border border-slate-200" height="220" src="https://www.google.com/maps?q=Rynek+Główny+Kraków&output=embed" loading="lazy"></iframe>
+      </div>
+    </div>
+  </article>
+
+  <!-- DAY 3: 16.05 -->
+  <article id="day3" class="day-anchor bg-white border border-slate-200 rounded-xl shadow-sm mb-4 overflow-hidden">
+    <div class="px-5 py-3 bg-gradient-to-r from-cyan-600 to-teal-700 text-white">
+      <div class="flex items-baseline justify-between flex-wrap gap-2">
+        <div><span class="text-cyan-200 text-xs">День 3</span> <h3 class="text-lg font-bold">Субота, 16 травня — Венеція, повний день</h3></div>
+        <span class="pill bg-white/20">🛶 Ніч 2 у Cannaregio</span>
+      </div>
+    </div>
+    <div class="p-5">
+      <div class="space-y-3 text-sm">
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>08:00–09:00</b> — сніданок у сусідній пастічерії (cornetto + cappuccino стоячи біля бару = italiano style)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>09:00–10:30</b> — <b>Rialto Market</b> (рибний ринок працює до ~10:30, це справжня Венеція), <b>Ponte di Rialto</b>, прогулянка по San Polo</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>10:30–13:00</b> — <b>Piazza San Marco</b>, <b>Basilica di San Marco</b> (обов'язково бронь онлайн ~€5, інакше черга 1-2 год), <b>Campanile</b> (дзвіниця з видом, €10), <b>Palazzo Ducale</b> (€30, 2+ год всередині — опційно, якщо темп дозволяє)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>13:00–14:30</b> — обід cicchetti crawl у San Polo: <b><i>All'Arco</i></b> (Calle dell'Occhialer 436, культовий, тісно, швидко), <b><i>Ostaria dai Zemei</i></b> (Ruga Vecchia 1045), <i>Cantina Do Mori</i> (найстаріший бакаро 1462 р.)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>14:30–17:00</b> — перетин через Ponte dell'Accademia у <b>Dorsoduro</b>: <b>Gallerie dell'Accademia</b> (опційно, €15), <b>Punta della Dogana</b>, <b>Basilica di Santa Maria della Salute</b>, прогулянка <b>Zattere</b> з видом на Giudecca</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>17:00–18:30</b> — відпочинок / кава (<i>Toletta</i> у Dorsoduro, або <i>Cafe Rosso</i> на Campo Santa Margherita)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>18:30–19:30</b> — захід сонця на <b>Zattere</b> або повернутись у Cannaregio на <b>Fondamenta della Misericordia</b> на аперитив</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>19:30–22:00</b> — вечеря: <b><i>Osteria al Timon</i></b> (скромне меню, morsetti al sarda, столики на каналі), <b><i>Osteria Anice Stellato</i></b> (якщо хочеш посидіти вечерю), <i>Paradiso Perduto</i> (жвавіше)</div></div>
+      </div>
+      <div class="mt-4 bg-emerald-50 border-l-4 border-emerald-400 p-3 text-xs rounded">
+        <b>🍽️ Must-eat у Венеції:</b> sarde in saor (сардини з оцтом і цибулею), baccalà mantecato (пастa з тріски), cicchetti (3-4 штуки + ombra келих вина = €5-7), risotto al nero di seppia (чорний ризото з каракатицею), fritto misto, tiramisù (його винайшли у Венеції/Тревізо)
+      </div>
+      <div class="mt-3 bg-sky-50 border-l-4 border-sky-400 p-3 text-xs rounded">
+        <b>💡 Порада:</b> Venezia Unica City Pass (€50) вигідний якщо відвідуєш 3+ платні атракції. Vaporetto для 2 ночей — краще пішки, центр обходиться за 25 хв. Якщо захочеш на острови — добовий vaporetto €25.
+      </div>
+      <div class="mt-3">
+        <iframe class="w-full rounded-lg border border-slate-200" height="220" src="https://www.google.com/maps?q=Cannaregio+Venezia&output=embed" loading="lazy"></iframe>
+      </div>
+    </div>
+  </article>
+
+  <!-- DAY 4: 17.05 -->
+  <article id="day4" class="day-anchor bg-white border border-slate-200 rounded-xl shadow-sm mb-4 overflow-hidden">
+    <div class="px-5 py-3 bg-gradient-to-r from-orange-500 to-amber-600 text-white">
+      <div class="flex items-baseline justify-between flex-wrap gap-2">
+        <div><span class="text-orange-200 text-xs">День 4</span> <h3 class="text-lg font-bold">Неділя, 17 травня — Венеція → Катанія → Сіракуза 🇮🇹</h3></div>
+        <span class="pill bg-white/20">✈️ Літак 11:15 · 🚗 Авто</span>
+      </div>
+    </div>
+    <div class="p-5">
+      <div class="space-y-3 text-sm">
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>06:30–07:15</b> — підйом, швидкий сніданок, чекаут</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>07:30</b> — з Cannaregio до <b>VCE Marco Polo</b>. <b>Рекомендую ATVO bus</b> від Piazzale Roma: 20 хв, €10, кожні 30 хв, багаж під сидіннями. З рюкзаками водний автобус Alilaguna теж варіант (30 хв з Fondamente Nove, €15), але з запасом на 2-3 пересадки пішки — ATVO надійніше. <b>Не використовуй Alilaguna якщо поспішаєш.</b></div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>08:30–09:30</b> — в аеропорту VCE (deadline 09:45)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>11:15</b> — ✈️ Wizz W4 6513 → <b>13:05 Catania (CTA)</b></div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>13:05–14:00</b> — висадка, зустріч з друзями в зоні прильотів, завантаження в авто. <b>Catania НЕ ночуємо</b></div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>14:00–15:30</b> — <b>Траса CTA → Сіракуза</b>: 67 км, ~1 год 15 хв по A18 (autostrada, толл ~€3). По дорозі можна зупинитись у <b>Brucoli</b> або <b>Augusta</b> на обід якщо хочете пляж і не застрявати в Ортіджі голодними (або доїдете в Сіракузу і пообідаєте там)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>~15:30</b> — прибуття в <b>Сіракузу</b>. <b>Парковка: Parcheggio Talete</b> (північний край Ортіджі, офіційна, €1.50/год або €15/добу, одразу за мостом перед в'їздом на острів). Не заїжджай глибше — ZTL!</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>16:00</b> — чекін (район Ортіджі, лівий бік острова ближче до моря)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>16:30–19:30</b> — вечірня прогулянка <b>Ortigia</b>: <b>Tempio di Apollo</b>, через ринок <b>Mercato di Ortigia</b> (до 14:00 живий, після 15:00 вже згортається але в неділю можуть бути зміни), <b>Piazza Duomo</b> (найгарніша площа), <b>Duomo di Siracusa</b> (побудований на давньогрецькому храмі Афіни — унікально, €2), <b>Fonte Aretusa</b> (прісне джерело з папірусом біля моря), <b>Castello Maniace</b> на кінчику острова</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>19:30–20:30</b> — aperitivo з видом на море: <i>Sal 10</i> (на Lungomare), <i>Vermut</i> (коктейльний бар)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>20:30–22:30</b> — вечеря: <b><i>Sicilia in Tavola</i></b> (Via Cavour 28, неймовірна свіжа паста, бронь заздалегідь!), <b><i>Trattoria Archimede</i></b> (класика), <b><i>Don Camillo</i></b> (якщо хочеш gourmet, дорожче), <i>Schiticchio</i> (локально і недорого)</div></div>
+      </div>
+      <div class="mt-4 bg-rose-50 border-l-4 border-rose-400 p-3 text-xs rounded">
+        <b>🚫 ZTL Ortigia:</b> весь центр Ортіджі — ZTL. В'їзд тільки для резидентів і готелів з дозволом. <b>Завжди паркуйся на Talete або Von Platen, і йди пішки.</b> Якщо готель у центрі Ортіджі — питай про ZTL pass наперед, багато готелів можуть тимчасово занести твій номер у білий список камер.
+      </div>
+      <div class="mt-3 bg-emerald-50 border-l-4 border-emerald-400 p-3 text-xs rounded">
+        <b>🍽️ Must-eat у Сіракузі:</b> pasta alla Norma (класика Сицилії), pasta con le sarde (з сардинами, родзинками, кропом), spaghetti ai ricci di mare (морські їжаки), pesce spada alla ghiotta (меч-риба), arancino al ragù, granita di mandorla + brioche col tuppo (це сицилійський сніданок!), cannolo siciliano
+      </div>
+    </div>
+  </article>
+
+  <!-- DAY 5: 18.05 -->
+  <article id="day5" class="day-anchor bg-white border border-slate-200 rounded-xl shadow-sm mb-4 overflow-hidden">
+    <div class="px-5 py-3 bg-gradient-to-r from-amber-500 to-yellow-600 text-white">
+      <div class="flex items-baseline justify-between flex-wrap gap-2">
+        <div><span class="text-amber-200 text-xs">День 5</span> <h3 class="text-lg font-bold">Понеділок, 18 травня — Сіракуза + Ното + Марцамемі + Calamosche</h3></div>
+        <span class="pill bg-white/20">🏖️ Перший пляж · Ніч 2 Сіракуза</span>
+      </div>
+    </div>
+    <div class="p-5">
+      <div class="space-y-3 text-sm">
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>08:30–09:30</b> — сицилійський сніданок: <b>granita di mandorla + brioche col tuppo</b> (обов'язково!) — в Ортіджі <i>Caffè Minerva</i> або <i>Voglia Matta</i></div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>09:30–12:00</b> — <b>Parco Archeologico della Neapolis</b> (за межами Ортіджі, ~10 хв авто, парковка біля входу €3-5). Вхід ~€13. Must-see: <b>Teatro Greco</b> (у травні іноді йдуть античні вистави!), <b>Orecchio di Dionisio</b> (печера з неймовірною акустикою), <b>Latomie del Paradiso</b>, <b>Ara di Ierone II</b></div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>12:00–12:45</b> — виїзд на південь по SS115 → <b>Ното (Noto)</b>, ~35 км / 45 хв</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>12:45–14:45</b> — <b>Ното, баукокове серце UNESCO</b>: <b>Cattedrale di Noto</b>, <b>Palazzo Nicolaci di Villadorata</b> (балкони з гротескними фігурами), <b>Corso Vittorio Emanuele</b>. Парковка: P.le Marconi (€1/год, за межами ZTL)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>14:00–14:45</b> — <b>обов'язкова зупинка у <i>Caffè Sicilia</i></b> (Corso Vittorio Emanuele 125). Це легендарне місце Corrado Assenza — найкраща granita і канолі у Сицилії за версією багатьох. Granita di mandorle + arancino + cannolo свіжоначиненого = прозріння</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>15:00</b> — Ното → <b>Марцамемі</b>, ~30 км / 35 хв по SP19</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>15:30–16:30</b> — <b>Marzamemi</b>, стара рибацька тонна: <b>Piazza Regina Margherita</b> (культова площа з церквою), <b>Tonnara di Marzamemi</b>. Спробувати тут <b>tonno</b> (тунець), <i>bottarga</i>, <i>scaccia</i>. Кав'ярня <i>Cortile Arabo</i>. Парковка безкоштовна край села</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>16:45</b> — Марцамемі → <b>Calamosche beach</b> (Vendicari nature reserve), ~15 км / 20 хв</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>17:00–19:00</b> — <b>🏖️ Пляж Calamosche</b>: парковка €5/день, 1 км пішки по стежці через скіф, білий пісок, бухточка 200 м, кришталева вода, дико і безлюдно у травні. <b>Вода ~18-19°C</b> — освіжаюче. Візьми рушник, сандалі, воду, бо кафе тільки біля парковки (<i>Calamosche farm house</i>)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>19:00–20:30</b> — повернення у Сіракузу (~55 км, 1 год)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>21:00–23:00</b> — вечеря у Ортіджі: сьогодні щось спокійніше — <i>Osteria Mariano</i> (домашня кухня, дешево), <i>Moon (Move On Art)</i> (якщо хочеш лайт / veg-friendly), або повернутись у <i>Sicilia in Tavola</i> якщо вчорашнє понравилось</div></div>
+      </div>
+      <div class="mt-4 bg-amber-50 border-l-4 border-amber-400 p-3 text-xs rounded">
+        <b>⚠️ Альтернатива пляжу:</b> якщо лінь йти 1 км до Calamosche — їдь на <b>Spiaggia di Eloro</b> (ближчий до Ното, швидший доступ, але менш мальовничий) або <b>Fontane Bianche</b> (ближче до Сіракузи, простий доступ, пісок, є бари). Ще варіант: <b>Vendicari — Spiaggia di Vendicari</b> — теж у заповіднику, ближче до парковки, ніж Calamosche.
+      </div>
+      <div class="mt-3 bg-sky-50 border-l-4 border-sky-400 p-3 text-xs rounded">
+        <b>💡 Порада:</b> день насичений (Neapolis + Ното + Марцамемі + пляж). Якщо темп здається швидким — викинь <b>Neapolis</b> (найважча частина пішки) і почни одразу з Ното. Або викинь Ното і роби Neapolis вранці + пляж на цілий день у Calamosche з довгим обідом на Cortile Arabo у Марцамемі.
+      </div>
+      <div class="mt-3">
+        <iframe class="w-full rounded-lg border border-slate-200" height="220" src="https://www.google.com/maps?q=Syracuse+Noto+Marzamemi+Calamosche&output=embed" loading="lazy"></iframe>
+      </div>
+    </div>
+  </article>
+
+  <!-- DAY 6: 19.05 -->
+  <article id="day6" class="day-anchor bg-white border border-slate-200 rounded-xl shadow-sm mb-4 overflow-hidden">
+    <div class="px-5 py-3 bg-gradient-to-r from-emerald-600 to-teal-700 text-white">
+      <div class="flex items-baseline justify-between flex-wrap gap-2">
+        <div><span class="text-emerald-200 text-xs">День 6</span> <h3 class="text-lg font-bold">Вівторок, 19 травня — Сіракуза → Таорміна 🌋 (без Етни)</h3></div>
+        <span class="pill bg-white/20">🏖️ Isola Bella · Ніч Таорміна</span>
+      </div>
+    </div>
+    <div class="p-5">
+      <div class="space-y-3 text-sm">
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>09:00–10:00</b> — сніданок, чекаут, завантаження авто</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>10:00</b> — виїзд <b>Сіракуза → Таорміна</b>: 125 км, ~1:45 по A18 (толл ~€4.50). Краєвид лівобіч — Етна. Опційна 20-хв зупинка у <b>Катанії</b> на пам'ятник слону і Piazza Duomo (але ZTL — залишай авто на окраїні)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>11:45</b> — прибуття Таорміна. <b>Парковка: Parcheggio Lumbi</b> (північний в'їзд, €15/добу, <b>безкоштовний shuttle кожні 15 хв до центру</b>) або <b>Parcheggio Porta Catania</b> (південний в'їзд, ближче, €2/год). Lumbi вигідніше на ніч</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>12:00</b> — чекін у готелі (район біля Porta Messina, Via Bagnoli Croci, або Corso Umberto)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>12:30–14:00</b> — обід: <b><i>Osteria Nero d'Avola</i></b> (Piazza S. Domenico 2, бронь заздалегідь — дуже популярно), <b><i>Ristorante Malvasia</i></b> (Via Paladini 6), <i>Trattoria Da Nino</i> (дешевше)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>14:00–16:00</b> — <b>Teatro Antico di Taormina</b>, €10 вхід, 1-1.5 год. Це найгарніший античний театр у світі з краєвидом на Етну + море. Культова фотка — крізь арки театру з Етною на фоні</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>16:00–16:30</b> — прогулянка <b>Corso Umberto</b> (пішохідна головна вулиця), <b>Piazza IX Aprile</b> (площа з шаховою підлогою і видом)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>16:30–17:00</b> — <b>Funivia</b> (канатна дорога) до <b>Isola Bella</b>. Станція біля Porta Messina. Квиток €4.50 в один бік, ~3 хв</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>17:00–19:00</b> — <b>🏖️ Isola Bella</b>: маленький острів-перлина, з'єднаний з сушею смужкою гальки (ходять пішки). Галечний пляж, кришталева вода, бухта. Вода ~18°C. Взяти аквашузи (камені!). <b>Купання — обов'язково</b>. Є платні lidi з лежаками (~€15-20) і безкоштовна зона</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>19:00–19:30</b> — funivia назад у Таорміну</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>19:30–20:00</b> — захід сонця з <b>Piazza IX Aprile</b> або <b>Villa Comunale</b> (міський парк з балконом над морем — безкоштовно, мало туристів)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>20:30–22:30</b> — вечеря у Таорміні: <b><i>Al Duomo</i></b> (біля Duomo, місцева класика), <b><i>La Piazzetta</i></b> (schooter у сквері, романтично), <i>Osteria RossoDiVino</i> (винна)</div></div>
+      </div>
+      <div class="mt-4 bg-emerald-50 border-l-4 border-emerald-400 p-3 text-xs rounded">
+        <b>🍽️ Must-eat у Таорміні:</b> <b>pasta alla Norma</b> (саме звідси — з баклажанів, помідорів, ріcotta salata), <b>arancino</b> (тут кажуть "arancinA" жін.рід), <b>granita di gelsi</b> (шовковиця — рідкісно і смачно), <b>cannolo siciliano</b> свіжонаповнений, <b>caponata</b> (овочеве рагу холодне)
+      </div>
+      <div class="mt-3 bg-sky-50 border-l-4 border-sky-400 p-3 text-xs rounded">
+        <b>💡 Порада щодо Isola Bella:</b> альтернатива funivia — пішки вниз по <i>Via Pirandello</i> з зигзагом серпантину (30 хв, круто), а назад — funivia. Або таксі ~€15 в один бік.
+      </div>
+    </div>
+  </article>
+
+  <!-- DAY 7: 20.05 -->
+  <article id="day7" class="day-anchor bg-white border border-slate-200 rounded-xl shadow-sm mb-4 overflow-hidden">
+    <div class="px-5 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+      <div class="flex items-baseline justify-between flex-wrap gap-2">
+        <div><span class="text-blue-200 text-xs">День 7</span> <h3 class="text-lg font-bold">Середа, 20 травня — Таорміна → Чефалу</h3></div>
+        <span class="pill bg-white/20">🚗 260 км · Ніч Чефалу</span>
+      </div>
+    </div>
+    <div class="p-5">
+      <div class="space-y-3 text-sm">
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>08:30–09:30</b> — розслаблений сніданок, чекаут, завантаження авто на Lumbi</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>09:30</b> — виїзд <b>Таорміна → Чефалу</b>: 260 км, ~3 год по A18 → A20, толл сумарно ~€12. Маршрут іде по північному узбережжю Сицилії через Messina, Milazzo, Patti</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>11:30–12:00</b> — <b>опційна зупинка</b>: або <b>Tindari</b> (60 км від Таорміни, Святилище Чорної Мадонни з видом на лагуни Marinello), або <b>Milazzo</b> (порт, звідси відправляються човни на Ліпарі), або <b>просто кава на автостраді Autogrill</b></div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>12:30–13:00</b> — прибуття <b>Чефалу</b>. <b>Парковка: Parcheggio Porta Terra</b> (великий паркінг за старим містом, €2/год або денний тариф), або <b>lungomare</b> вздовж пляжу</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>13:00–14:30</b> — обід: <b><i>Tinchitè Taverna</i></b> (Via XXV Novembre 16, локальна), <b><i>La Brace</i></b> (Via 25 Novembre 10, морепродукти), <i>Locanda del Marinaio</i> (Via Vittorio Emanuele 73)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>14:30–16:30</b> — <b>Duomo di Cefalù</b> (норманська базиліка 1131 р., мозаїка Христа Пантократора — одна з найкращих у світі, UNESCO), прогулянка старим містом, <b>Lavatoio Medievale</b> (середньовічна пральня), <b>Piazza Duomo</b></div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>16:30–18:30</b> — <b>🏖️ Spiaggia di Cefalù</b>: міський пісчаний пляж прямо біля старого міста з епічним видом на скелю La Rocca і Duomo. Тихий, пологий. <b>Другий пляж подорожі</b>, 1.5-2 години купання/засмаги</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>18:30–19:30</b> — душ, переодягання, aperitivo з видом на захід сонця — <i>Al Gabbiano</i> на Lungomare або тераса готелю</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>20:00–22:00</b> — вечеря в старому місті. <i>La Gallery</i>, <i>Cortile Pepe</i> (романтична), <i>Kentia</i>. Арт-ефект: Duomo підсвічений</div></div>
+      </div>
+      <div class="mt-4 bg-blue-50 border-l-4 border-blue-400 p-3 text-xs rounded">
+        <b>🧗 Опція для ентузіастів:</b> <b>Rocca di Cefalù</b> — підйом на скелю над містом (90 хв туди-назад, помірно круто). Наверху руїни античного храму Діани і середньовічна фортеця + краєвид. Якщо вечір сонячний — йдіть о 17:00 перед пляжем. Але це додаткова фізнагрузка; за повільного темпу можна пропустити.
+      </div>
+      <div class="mt-3 bg-sky-50 border-l-4 border-sky-400 p-3 text-xs rounded">
+        <b>💡 Альтернатива ночівлі:</b> якщо хвилюєтесь за ранковий трафік 21.05 — ніч можна провести у <b>Cinisi / Terrasini</b> (біля PMO, 1 год від Чефалу), але тоді втратите вечерю і захід сонця у Чефалу. Моя рекомендація — <b>ніч у Чефалу</b>, виїхати о 9:30 ранку — трафік ще не пік, дорога А20 вільна.
+      </div>
+    </div>
+  </article>
+
+  <!-- DAY 8: 21.05 -->
+  <article id="day8" class="day-anchor bg-white border border-slate-200 rounded-xl shadow-sm mb-4 overflow-hidden">
+    <div class="px-5 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+      <div class="flex items-baseline justify-between flex-wrap gap-2">
+        <div><span class="text-purple-200 text-xs">День 8</span> <h3 class="text-lg font-bold">Четвер, 21 травня — Чефалу → Палермо → Відень 🇦🇹</h3></div>
+        <span class="pill bg-white/20">✈️ Літак 13:15 · 🚂 Наступний ранок потяг</span>
+      </div>
+    </div>
+    <div class="p-5">
+      <div class="space-y-3 text-sm">
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>08:00–09:00</b> — сніданок (остання granita di mandorla у житті цього трипу), прощання з друзями якщо їм далі окремо</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>09:15</b> — виїзд <b>Чефалу → PMO Falcone Borsellino</b>: 95 км, ~1:15 по A20 → A29 dir Trapani, толл ~€5</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>10:30</b> — прибуття аеропорт. <b>Здача авто</b> — заклади 30-45 хв (парковка rental, огляд, підпис)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>11:15–11:45</b> — чекін, security. <b>Deadline 11:45</b></div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>13:15</b> — ✈️ FR7317 → <b>15:15 Wien (VIE)</b></div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>15:15–16:00</b> — вихід з літака, прогулянка до залізничної станції (всередині аеропорту VIE)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>16:00–16:30</b> — <b>Railjet ÖBB з VIE Flughafen до Wien Hauptbahnhof</b>: прямий, 15 хв, €4.40. Їде кожні 30 хв. <b>Це найкращий варіант</b> (CAT за €12 йде у Wien Mitte і довше; S7 дешевше €4.30 але з пересадкою). Купити квиток в автоматі на платформі або в додатку ÖBB</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>16:45</b> — чекін у готелі біля <b>Wien Hauptbahnhof</b>. Район зручний — завтра вранці будете на тому ж вокзалі на потяг до Жиліни</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>17:15</b> — U1 з Hauptbahnhof до <b>Stephansplatz</b> (4 хв, €2.40, або добовий €5.80)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>17:30–20:00</b> — прогулянка центру: <b>Stephansdom</b> (ззовні і всередині — нава безкоштовно), <b>Graben</b> і <b>Kohlmarkt</b> (пишна шопінг-вулиця), <b>Hofburg</b> (зовні), <b>Albertina</b> (тераса з видом на Оперу безкоштовно), <b>Kärntnerstraße</b> → назад до Stephansplatz</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>20:00–22:00</b> — <b>вечеря</b>: <b><i>Figlmüller</i></b> (Wollzeile 5, легендарний wiener schnitzel розміром з тарілку — туристично, але класика), <b><i>Plachutta Wollzeile</i></b> (справжній tafelspitz — австрійський boiled beef з бульйоном, трохи дорожче), або <b><i>Gasthaus Pöschl</i></b> (локальніше). На десерт — <b><i>Café Sacher</i></b> (Sachertorte) або <b><i>Demel</i></b> (обидва культові, обидва туристичні, але це ж Відень)</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>22:00–22:30</b> — U1 назад до Hauptbahnhof. Сон. 🛏️</div></div>
+        <div class="flex gap-3"><div class="timeline-dot mt-1.5 flex-shrink-0"></div><div><b>22.05 ранок</b> — з Wien Hauptbahnhof прямий потяг до <b>Žilina</b>. Наприклад REX/RJ через Břeclav-Bratislava-Žilina ~3-4 год. <b>Купи квиток заздалегідь на oebb.at</b> або <a href="https://slovakrail.sk" class="text-blue-600 underline">slovakrail.sk</a>. Уточни точний час у замовника</div></div>
+      </div>
+      <div class="mt-4 bg-emerald-50 border-l-4 border-emerald-400 p-3 text-xs rounded">
+        <b>🍽️ Must-eat у Відні:</b> Wiener Schnitzel (телятина!), Tafelspitz, Sachertorte, Apfelstrudel, Kaiserschmarrn (порваний млинець з компотом), Melange (віденська кава з пінкою)
+      </div>
+      <div class="mt-3 bg-sky-50 border-l-4 border-sky-400 p-3 text-xs rounded">
+        <b>💡 Порада:</b> купи <b>Wien 24h Ticket €5.80</b> — окупиться 3 поїздками. На 21.05 з 16:30 він діятиме до 22.05 16:30, тож покриє і ранок до вокзалу.
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- TRANSPORT SECTION -->
+<section id="transport" class="mb-10">
+  <h2 class="text-2xl font-extrabold text-slate-900 mb-4">🚆 Транспорт — детально</h2>
+  <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4 text-sm">
+    <div>
+      <h3 class="font-bold text-slate-900 mb-1">🇵🇱 Kraków Główny → KRK Airport</h3>
+      <p><b>SKA1 train (Koleje Małopolskie):</b> 17–20 хв, €4.50 (20 PLN) з особи, кожні 30 хв. Платформа просто на головному вокзалі. Рекомендація ✅</p>
+    </div>
+    <div>
+      <h3 class="font-bold text-slate-900 mb-1">🇮🇹 TSF Treviso → Venezia (вечір 15.05)</h3>
+      <p><b>Barzi Service:</b> €12, 40 хв прямо до Venezia Tronchetto, без зупинок. ✅ Найшвидше</p>
+      <p><b>ATVO bus:</b> €12, 70 хв до Piazzale Roma</p>
+      <p>Терравіжн / Flixbus інколи теж є, перевір перед вильотом</p>
+    </div>
+    <div>
+      <h3 class="font-bold text-slate-900 mb-1">🇮🇹 Venezia → VCE Marco Polo (ранок 17.05)</h3>
+      <p><b>ATVO bus з Piazzale Roma:</b> €10, 20 хв, кожні 30 хв, багаж під сидіннями. ✅ З рюкзаками найраціональніше</p>
+      <p><b>Alilaguna Blue line:</b> €15, 60-90 хв водним автобусом. Красивий вхід у місто, але з рюкзаками + ранковий рейс — ризиковано</p>
+      <p><b>Приватний water taxi:</b> €110-140. Якщо групою 4 — ok, якщо парою — оверкіл</p>
+    </div>
+    <div>
+      <h3 class="font-bold text-slate-900 mb-1">🇮🇹 Сицилія — дорожня сітка і толли</h3>
+      <ul class="ml-5 list-disc">
+        <li>CTA → Сіракуза (A18): 67 км, ~1:15, толл ~€3</li>
+        <li>Сіракуза → Таорміна (A18 півн.): 125 км, ~1:45, толл ~€4.50</li>
+        <li>Таорміна → Чефалу (A18→A20): 260 км, ~3:00, толл ~€12</li>
+        <li>Чефалу → Palermo PMO (A20→A29): 95 км, ~1:15, толл ~€5</li>
+        <li><b>Заправки:</b> по автострадах Eni/Q8. Ціна 1.85-2.00 €/л у травні 2026 (орієнтовно). Готівка або карта</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-bold text-slate-900 mb-1">🇦🇹 VIE → Wien Hauptbahnhof (21.05 вечір)</h3>
+      <p><b>ÖBB Railjet прямий:</b> €4.40, 15 хв, кожні 30 хв. ✅ <b>Обирай це</b></p>
+      <p><b>CAT City Airport Train:</b> €14.90, 16 хв, до Wien Mitte (не Hauptbahnhof!). Переплата без сенсу</p>
+      <p><b>S7 S-Bahn:</b> €4.30, 25 хв, до Wien Mitte → пересадка U4/U1 до Hauptbahnhof. Дешевший варіант, але пересадка</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOTELS / DISTRICTS -->
+<section id="hotels" class="mb-10">
+  <h2 class="text-2xl font-extrabold text-slate-900 mb-4">🏨 Готелі — райони і рекомендації</h2>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+      <h3 class="font-bold text-slate-900">Венеція · 2 ночі · <span class="text-sky-600">Cannaregio</span></h3>
+      <p class="text-xs text-slate-500 mt-1">Рекомендований район</p>
+      <p class="text-sm mt-2">Аутентичний район з найкращим локальним бакаро-аперитивом. 15-20 хв пішки до San Marco. 5 хв до залізничного вокзалу Santa Lucia. Зручно для виїзду в VCE через Piazzale Roma</p>
+      <p class="text-sm mt-2"><b>Альтернативи:</b> Castello (тихий, далі від туристів, але довше пішки); Dorsoduro (богемний, університет); San Polo (центровий, дорожче)</p>
+      <p class="text-sm mt-2"><b>Бюджет:</b> від €80-100/ніч за скромний B&B зі своїм санвузлом у травні</p>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+      <h3 class="font-bold text-slate-900">Сіракуза · 2 ночі · <span class="text-sky-600">Ortigia (лівий бік острова)</span></h3>
+      <p class="text-xs text-slate-500 mt-1">Рекомендований район</p>
+      <p class="text-sm mt-2">Старе місто — острів Ортіджа. Усі ресторани, Duomo, море — в 5-10 хв пішки. <b>Важливо:</b> питай у готелю ZTL pass для одноразового заїзду на парковку, потім припаркуйсь на Talete і забудь про авто</p>
+      <p class="text-sm mt-2"><b>Альтернативи:</b> новіше місто Siracusa (дешевше, але далеко від атмосфери, треба ходити 20 хв); агротуризм за містом (якщо хочеш тишу, але нерелевантно для 2 ночей)</p>
+      <p class="text-sm mt-2"><b>Бюджет:</b> від €60-80/ніч B&B</p>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+      <h3 class="font-bold text-slate-900">Таорміна · 1 ніч · <span class="text-sky-600">біля Porta Messina або Corso Umberto</span></h3>
+      <p class="text-sm mt-2">Один раз — заночувати в центрі. Район Via Bagnoli Croci — тихіше. Via Pirandello — з видом на море, але більше крок до театру</p>
+      <p class="text-sm mt-2"><b>Альтернатива:</b> Mazzarò (низ, біля моря, біля funivia вниз) — якщо хочете прокинутись одразу на пляжі. Але тоді відпадає вечірній центр</p>
+      <p class="text-sm mt-2"><b>Бюджет:</b> від €70-90/ніч (Таорміна дорожча за середньосиціл.)</p>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+      <h3 class="font-bold text-slate-900">Чефалу · 1 ніч · <span class="text-sky-600">Centro Storico (старе місто)</span></h3>
+      <p class="text-sm mt-2">Щоб прокинутись під звук моря в норманському місті. Припаркуйся на Porta Terra, рюкзаки занеси пішки</p>
+      <p class="text-sm mt-2"><b>Бюджет:</b> від €60-80/ніч</p>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm md:col-span-2">
+      <h3 class="font-bold text-slate-900">Відень · 1 ніч · <span class="text-sky-600">біля Wien Hauptbahnhof</span></h3>
+      <p class="text-sm mt-2">Максимум зручності: ввечері 21.05 заходите після Railjet, вранці 22.05 виходите прямо на потяг до Жиліни. До Stephansplatz — 4 хв U1</p>
+      <p class="text-sm mt-2"><b>Рекомендовані райони:</b> Favoriten біля Quartier Belvedere (10-й район, прямо за вокзалом, багато готелів 3-4⭐, тихо), або Wieden (4-й район, північніше вокзалу, стильніше)</p>
+      <p class="text-sm mt-2"><b>Бюджет:</b> від €70-100/ніч 3⭐ готель</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOD GUIDE -->
+<section id="food" class="mb-10">
+  <h2 class="text-2xl font-extrabold text-slate-900 mb-4">🍝 Їжа — must-try по регіонах</h2>
+  <div class="grid md:grid-cols-2 gap-4 text-sm">
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+      <h3 class="font-bold text-slate-900">🇵🇱 Краків</h3>
+      <ul class="mt-2 ml-5 list-disc space-y-1">
+        <li><b>Pierogi</b> (ruskie = картопля+сир, z mięsem = м'ясо, ze szpinakiem = шпинат)</li>
+        <li><b>Obwarzanek krakowski</b> — кільце-бублик з маком/кунжутом, ~3 PLN на кожному розі</li>
+        <li><b>Zapiekanka</b> — довгий гарячий бутерброд з грибами-сиром, знакова street food на Plac Nowy у Kazimierz</li>
+        <li><b>Żurek</b> — кислий суп з житнього борошна з ковбасою і яйцем</li>
+        <li><b>Oscypek</b> — копчений овечий сир з горами, часто на вуличних мангалах</li>
+      </ul>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+      <h3 class="font-bold text-slate-900">🇮🇹 Венеція</h3>
+      <ul class="mt-2 ml-5 list-disc space-y-1">
+        <li><b>Cicchetti</b> — маленькі тости з різним топпінгом у бакарo (1-3€ штука)</li>
+        <li><b>Sarde in saor</b> — сардини мариновані з цибулею, родзинками, кедровими горіхами</li>
+        <li><b>Baccalà mantecato</b> — збита паста з тріски на поленті</li>
+        <li><b>Risotto al nero di seppia</b> — чорний ризото з каракатицею</li>
+        <li><b>Fegato alla veneziana</b> — печінка з цибулею</li>
+        <li><b>Tiramisù</b> — винайдений у Тревізо</li>
+        <li><b>Spritz</b> — Aperol або Select — класичний аперитив</li>
+        <li class="text-rose-700"><b>⛔ Уникати:</b> ресторани з вивіскою "tourist menu", особливо навколо San Marco. Різниця в якості 10×</li>
+      </ul>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+      <h3 class="font-bold text-slate-900">🇮🇹 Сицилія — схід (Сіракуза, Таорміна, Ното)</h3>
+      <ul class="mt-2 ml-5 list-disc space-y-1">
+        <li><b>Pasta alla Norma</b> — з обсмаженими баклажанами, томатом, ricotta salata (батьківщина — Катанія/Таорміна)</li>
+        <li><b>Pasta con le sarde</b> — з сардинами, кропом, родзинками, кедровими горіхами (Палермо) </li>
+        <li><b>Arancino al ragù</b> — обсмажена рисова кулька з м'ясним рагу (у Катанії конічний, у Палермо круглий, "arancinа" fem.)</li>
+        <li><b>Granita di mandorla + brioche col tuppo</b> — <u>сніданок Сицилії</u>, мигдальне заморожене з теплою булочкою</li>
+        <li><b>Caponata</b> — рагу з баклажанів, солодко-кисле</li>
+        <li><b>Cannolo siciliano</b> — хрустка трубочка з рикотою, <b>начиняти ПРИ ПОДАЧІ</b></li>
+        <li><b>Pesce spada alla ghiotta</b> — меч-риба з помідорами, каперсами</li>
+        <li><b>Spaghetti ai ricci di mare</b> — з морськими їжаками (сезонно)</li>
+      </ul>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+      <h3 class="font-bold text-slate-900">🇮🇹 Сицилія — захід (Палермо, Чефалу)</h3>
+      <ul class="mt-2 ml-5 list-disc space-y-1">
+        <li><b>Pane e panelle</b> — сендвіч з обсмаженими нутовими оладками (Palermo street food)</li>
+        <li><b>Sfincione</b> — "палермітанська пицця-фокача" з цибулею, помідорами, анчоусами</li>
+        <li><b>Pane con la milza</b> — сендвіч з яловичою селезінкою (не для слабких, але автентика)</li>
+        <li><b>Crocchè</b> — картопляні крокети, йдуть у парі з panelle</li>
+        <li><b>Caciocavallo Ragusano DOP</b> — сицилійський твердий сир</li>
+        <li><b>Nero d'Avola</b> — основне червоне вино регіону</li>
+        <li><b>Frutta martorana</b> — марципанові фрукти, візуально неймовірні</li>
+      </ul>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm md:col-span-2">
+      <h3 class="font-bold text-slate-900">🇦🇹 Відень</h3>
+      <ul class="mt-2 ml-5 list-disc space-y-1">
+        <li><b>Wiener Schnitzel</b> — тонко відбита телятина у сухарях (не свинина! свинина = Schnitzel Wiener Art)</li>
+        <li><b>Tafelspitz</b> — тушкована яловичина з бульйоном, хроном, яблучним соусом</li>
+        <li><b>Sachertorte</b> — шоколадний торт з абрикосовою прошарком (Hotel Sacher — оригінал, Demel — конкурент)</li>
+        <li><b>Apfelstrudel</b> — яблучний штрудель з тонким тестом</li>
+        <li><b>Kaiserschmarrn</b> — "імператорський безладний млинець" з родзинками і сливовим компотом</li>
+        <li><b>Melange</b> — віденський еспресо з молочною пінкою (не cappuccino!)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BEACHES -->
+<section id="beaches" class="mb-10">
+  <h2 class="text-2xl font-extrabold text-slate-900 mb-4">🏖️ Пляжі — план 2+ купання</h2>
+  <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm text-sm">
+    <div class="mb-4 bg-amber-50 border-l-4 border-amber-400 p-3 rounded text-xs">
+      <b>Температура води у травні:</b> 17-19°C (Ionic), 18-19°C (Tyrrhenian). <b>Освіжаюче, але купатись можна</b>, особливо після 15-хв прогулянки на сонці. Ранок холодніший — йдіть після 14:00.
+    </div>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="border border-slate-200 rounded-lg p-4">
+        <h3 class="font-bold text-slate-900">🥇 Calamosche (Vendicari) · 18.05</h3>
+        <p class="text-slate-500 text-xs mt-1">Заповідник біля Ното</p>
+        <p class="mt-2">Білий пісок, бухточка 200 м, кришталева вода, немає забудови. Пішки 1 км від парковки. Парковка €5. Вхід у резерват €3.50 (якщо заходиш з іншого входу). Дикий, автентичний, "картинковий"</p>
+        <p class="text-xs text-slate-500 mt-2"><b>Плюси:</b> найкрасивіший. <b>Мінуси:</b> йти 1 км, зручств мало</p>
+      </div>
+      <div class="border border-slate-200 rounded-lg p-4">
+        <h3 class="font-bold text-slate-900">🥇 Isola Bella · 19.05</h3>
+        <p class="text-slate-500 text-xs mt-1">Таорміна</p>
+        <p class="mt-2">Культовий маленький острів-перлина з'єднаний смужкою гальки. Вода кристальна, рифи. Платні lidi €15-20, безкоштовна зона теж є. Funivia з центру Таорміни €4.50</p>
+        <p class="text-xs text-slate-500 mt-2"><b>Плюси:</b> знакова картинка, інфраструктура. <b>Мінуси:</b> галька — візьми аквашузи</p>
+      </div>
+      <div class="border border-slate-200 rounded-lg p-4">
+        <h3 class="font-bold text-slate-900">🥈 Spiaggia di Cefalù · 20.05</h3>
+        <p class="text-slate-500 text-xs mt-1">Центр Чефалу</p>
+        <p class="mt-2">Міський пісчаний пляж прямо під старим містом і Duomo. Пологий, мілкий, безкоштовна зона + платні lidi. Ідеально для розслабленого купання після обіду і прогулянки</p>
+        <p class="text-xs text-slate-500 mt-2"><b>Плюси:</b> зручність 10/10, пейзаж. <b>Мінуси:</b> може бути людно</p>
+      </div>
+      <div class="border border-slate-200 rounded-lg p-4">
+        <h3 class="font-bold text-slate-900">🥉 Альтернативи / запасні</h3>
+        <ul class="mt-2 ml-4 list-disc space-y-1">
+          <li><b>Fontane Bianche</b> — 20 км від Сіракузи, простий доступ, пісок</li>
+          <li><b>Vendicari (головний пляж)</b> — ближчий від парковки, ніж Calamosche</li>
+          <li><b>Mazzarò beach</b> (Таорміна, нижче Isola Bella)</li>
+          <li><b>Mondello</b> — міський Палермо, якщо останній день буде час перед PMO</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RISK / TIME BUDGET -->
+<section id="risks" class="mb-10">
+  <h2 class="text-2xl font-extrabold text-slate-900 mb-4">⏱️ Бюджет часу vs ризики</h2>
+  <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+    <div class="overflow-x-auto">
+    <table class="w-full text-xs sm:text-sm">
+      <thead class="bg-slate-50 text-slate-600 text-[11px] uppercase">
+        <tr>
+          <th class="px-3 py-2 text-left">Етап</th>
+          <th class="px-3 py-2 text-left">Реально встигнемо</th>
+          <th class="px-3 py-2 text-left">Якщо поспішимо</th>
+          <th class="px-3 py-2 text-left">Не встигнемо</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        <tr><td class="px-3 py-2 font-semibold">Краків 15.05 (4 год)</td><td class="px-3 py-2">Rynek, Sukiennice, Mariacki, обід</td><td class="px-3 py-2">+ Wawel зовні, Kazimierz</td><td class="px-3 py-2">Wawel всередину, Auschwitz</td></tr>
+        <tr><td class="px-3 py-2 font-semibold">Венеція 16.05</td><td class="px-3 py-2">Rialto, San Marco, Dorsoduro, 2 bacari обходи</td><td class="px-3 py-2">+ Palazzo Ducale, Accademia</td><td class="px-3 py-2">Мурано/Бурано (півдня туди-назад)</td></tr>
+        <tr><td class="px-3 py-2 font-semibold">Сіракуза 17.05 (півдня)</td><td class="px-3 py-2">Вся Ортіджа пішки, Duomo, Aretusa, Maniace, вечеря</td><td class="px-3 py-2">+ Lungomare, Musей Аркимеда</td><td class="px-3 py-2">Neapolis у цей день</td></tr>
+        <tr><td class="px-3 py-2 font-semibold">День 18.05</td><td class="px-3 py-2">Neapolis + Ното + Марцамемі + пляж — це ВЖЕ багато</td><td class="px-3 py-2">+ Palazzo Nicolaci всередину</td><td class="px-3 py-2">Ragusa/Modica (далеко)</td></tr>
+        <tr><td class="px-3 py-2 font-semibold">Таорміна 19.05</td><td class="px-3 py-2">Teatro + Corso + Isola Bella купання</td><td class="px-3 py-2">+ Castelmola (село вище)</td><td class="px-3 py-2">Етна (півдня), Савока (Хрещний батько)</td></tr>
+        <tr><td class="px-3 py-2 font-semibold">Дорога 20.05</td><td class="px-3 py-2">Таорміна→Чефалу + Чефалу повний вечір</td><td class="px-3 py-2">+ Tindari/Milazzo стоп</td><td class="px-3 py-2">Мессина як зупинка</td></tr>
+        <tr><td class="px-3 py-2 font-semibold">Відень 21.05</td><td class="px-3 py-2">Stephansdom, Hofburg зовні, вечеря</td><td class="px-3 py-2">+ Albertina тераса, Opera</td><td class="px-3 py-2">Шенбрунн, музеї (нема часу)</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section id="checklist" class="mb-10">
+  <h2 class="text-2xl font-extrabold text-slate-900 mb-4">✅ Чекліст перед виїздом</h2>
+  <div class="grid md:grid-cols-2 gap-4 text-sm">
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+      <h3 class="font-bold text-slate-900 mb-2">📄 Документи</h3>
+      <ul class="space-y-1">
+        <li>☐ Закордонний паспорт (мін. 3 міс до експірації від 21.05)</li>
+        <li>☐ ID картка Польща (опційно)</li>
+        <li>☐ Водійські права (national + міжнародні IDP — на Сицилії іноді питають)</li>
+        <li>☐ Страховка мандрівна (Європа, з покриттям спорту на воді якщо будете плавати)</li>
+        <li>☐ Страховка авто — CDW/SCDW повна + Theft + Tyres/Windows</li>
+        <li>☐ Бронь готелів (роздруківки або в телефоні)</li>
+        <li>☐ Бронь авіаквитків (W4V2WQ, YUCC7R, E5E56X)</li>
+        <li>☐ Бронь авто (voucher)</li>
+        <li>☐ Бронь потягу Wien→Žilina</li>
+      </ul>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+      <h3 class="font-bold text-slate-900 mb-2">💳 Гроші і карти</h3>
+      <ul class="space-y-1">
+        <li>☐ 2 картки (Visa + Mastercard) на різних банках — backup</li>
+        <li>☐ Готівка ~200€ (50% тримай окремо)</li>
+        <li>☐ Готівка PLN ~200 (для Кракова на день)</li>
+        <li>☐ Revolut/Wise — для толлів і парковок, щоб не конвертувати дорого</li>
+        <li>☐ Tip-cash €20-30 дрібними купюрами</li>
+      </ul>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+      <h3 class="font-bold text-slate-900 mb-2">📱 Телефон і додатки</h3>
+      <ul class="space-y-1">
+        <li>☐ EU-роумінг активний (UA оператори — перевір!) або eSIM (Airalo EU)</li>
+        <li>☐ <b>Google Maps</b> offline для Сицилії (скачай регіон)</li>
+        <li>☐ <b>FreeNow</b> — таксі в Італії/Австрії</li>
+        <li>☐ <b>Uber</b> — Польща, резерв</li>
+        <li>☐ <b>ÖBB</b> додаток — квитки на залізницю в Австрії</li>
+        <li>☐ <b>Trenitalia</b> / <b>Italo</b> — якщо передумаєте і підете потягом в Італії</li>
+        <li>☐ <b>Power bank</b> 10000+ mAh</li>
+        <li>☐ Адаптер EU (хоча Італія/Австрія використовують Schuko як UA — зазвичай не треба, але Польща теж ок)</li>
+      </ul>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+      <h3 class="font-bold text-slate-900 mb-2">🎒 Рюкзак — що взяти</h3>
+      <ul class="space-y-1">
+        <li>☐ <b>Перевір розмір рюкзака!</b> Ryanair strict 40×25×20 без Priority</li>
+        <li>☐ Купальник/плавки × 2 (щоб мокрий не тягнути)</li>
+        <li>☐ Мікрофіброва пляжна сумка-рушник</li>
+        <li>☐ Аквашузи (Isola Bella — галька)</li>
+        <li>☐ Сонцезахист SPF 50+, капелюх, окуляри</li>
+        <li>☐ Легка вітровка (ввечері у Таорміні/Чефалу може бути свіжо)</li>
+        <li>☐ Зручне взуття (ходіння +10 км/день) + одна пара на вечір</li>
+        <li>☐ Аптечка базова: парацетамол, пластири, від отруєнь, мотилок</li>
+        <li>☐ Багаторазова пляшка води (у Венеції та Сицилії багато фонтанів)</li>
+      </ul>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm md:col-span-2">
+      <h3 class="font-bold text-slate-900 mb-2">🚗 Для орендованого авто (17-21.05)</h3>
+      <ul class="space-y-1">
+        <li>☐ Міжнародні права (IDP) — рекомендується</li>
+        <li>☐ Кредитна карта на імʼя водія для застави</li>
+        <li>☐ Перед виїздом з CTA — <b>відео кругом авто на телефон</b> (докази стану)</li>
+        <li>☐ Скріни ZTL-мап: Ortigia, Noto, Taormina, Cefalù, Palermo (в офлайн)</li>
+        <li>☐ Парковки wayp: <b>P.Talete Siracusa</b>, <b>P.Lumbi Taormina</b>, <b>P.Porta Terra Cefalù</b></li>
+        <li>☐ Знати правила платних автострад (Telepass — ні; прийматимеш квиток і платиш на виїзді)</li>
+        <li>☐ Канистра води у багажнику, зарядка телефона в авто (USB)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</div><!-- /view-plan -->
+
+<!-- GANTT VIEW -->
+<div id="view-gantt" class="hidden">
+  <section class="bg-white rounded-2xl shadow-sm p-5 border border-slate-200 mb-6">
+    <h2 class="text-2xl font-bold text-slate-800 mb-2">📊 Гант-діаграма подорожі</h2>
+    <p class="text-sm text-slate-600 mb-4">Часова шкала 06:00–24:00. На мобільному — горизонтальний скрол. Наведи на блок щоб побачити точний час.</p>
+
+    <div class="flex flex-wrap gap-3 text-xs mb-4">
+      <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-indigo-500"></span> Трансфер / дорога</span>
+      <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-rose-500"></span> Переліт</span>
+      <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-amber-500"></span> Огляд міста</span>
+      <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-emerald-500"></span> Їжа</span>
+      <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-cyan-500"></span> Пляж / море</span>
+      <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-slate-400"></span> Сон / готель</span>
+      <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-slate-300"></span> Очікування</span>
+    </div>
+
+    <div class="overflow-x-auto border border-slate-200 rounded-xl">
+      <div style="min-width: 1100px;">
+        <!-- Hour header -->
+        <div class="flex border-b border-slate-200 bg-slate-50 sticky top-0 text-[10px] text-slate-500 font-mono">
+          <div class="w-28 shrink-0 px-2 py-1 border-r border-slate-200 font-semibold text-slate-700">День</div>
+          <div id="gantt-hours" class="flex-1 relative h-6"></div>
+        </div>
+        <div id="gantt-body"></div>
+      </div>
+    </div>
+
+    <p class="text-xs text-slate-500 mt-3">💡 Дні зі зміною локації позначені стрілкою → в назві. Перельоти — червоним, включно з буфером аеропорту.</p>
+  </section>
+
+  <section class="grid md:grid-cols-3 gap-4 mb-6">
+    <div class="bg-white rounded-2xl shadow-sm p-5 border border-slate-200">
+      <div class="text-xs uppercase tracking-wide text-slate-500">Загальна тривалість</div>
+      <div class="text-3xl font-bold text-slate-800 mt-1">8 днів</div>
+      <div class="text-sm text-slate-600 mt-1">14.05 – 21.05.2026</div>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm p-5 border border-slate-200">
+      <div class="text-xs uppercase tracking-wide text-slate-500">Перельоти</div>
+      <div class="text-3xl font-bold text-rose-600 mt-1">3</div>
+      <div class="text-sm text-slate-600 mt-1">KRK→TSF, VCE→CTA, PMO→VIE</div>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm p-5 border border-slate-200">
+      <div class="text-xs uppercase tracking-wide text-slate-500">Авто на Сицилії</div>
+      <div class="text-3xl font-bold text-indigo-600 mt-1">~750 km</div>
+      <div class="text-sm text-slate-600 mt-1">CTA → Сіракузи → Таорміна → Чефалу → PMO</div>
+    </div>
+  </section>
+</div><!-- /view-gantt -->
+
+<!-- FOOTER -->
+<footer class="text-center text-xs text-slate-500 pt-6 border-t border-slate-200">
+  <p>Trip Plan v1 · Generated 09.04.2026 · Based on research across 15+ sources</p>
+  <p class="mt-1">Sources: Venice airport transport / Sicily driving guides / Krakow transit / Vienna Airport Trains / Vendicari Nature Reserve</p>
+  <p class="mt-2 text-slate-400">Файл оновлюй: <code>sicily-trip-plan-v1.html</code></p>
+</footer>
+</main>
+
+<script>
+// Tab switcher
+const btnPlan = document.getElementById('tab-plan-btn');
+const btnGantt = document.getElementById('tab-gantt-btn');
+const viewPlan = document.getElementById('view-plan');
+const viewGantt = document.getElementById('view-gantt');
+const ACTIVE = 'px-4 py-2 rounded-lg font-semibold text-sm bg-sky-600 text-white shadow';
+const INACTIVE = 'px-4 py-2 rounded-lg font-semibold text-sm bg-white border border-slate-200 text-slate-700';
+btnPlan.addEventListener('click', () => {
+  viewPlan.classList.remove('hidden'); viewGantt.classList.add('hidden');
+  btnPlan.className = ACTIVE; btnGantt.className = INACTIVE;
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+btnGantt.addEventListener('click', () => {
+  viewGantt.classList.remove('hidden'); viewPlan.classList.add('hidden');
+  btnGantt.className = ACTIVE; btnPlan.className = INACTIVE;
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
+// Gantt rendering
+const H_START = 6, H_END = 24, H_RANGE = H_END - H_START;
+const pct = h => ((h - H_START) / H_RANGE) * 100;
+
+const COLORS = {
+  transport: 'bg-indigo-500',
+  sights:    'bg-amber-500',
+  food:      'bg-emerald-500',
+  beach:     'bg-cyan-500',
+  flight:    'bg-rose-500',
+  sleep:     'bg-slate-400',
+  wait:      'bg-slate-300'
+};
+
+const fmt = h => {
+  const hh = Math.floor(h);
+  const mm = Math.round((h - hh) * 60);
+  return String(hh).padStart(2,'0') + ':' + String(mm).padStart(2,'0');
+};
+
+const DAYS = [
+  { date: '14.05 Чт', title: 'Київ → потяг', items: [
+    {s:6, e:20, t:'sights', l:'Київ — збори, роздрук білетів'},
+    {s:20, e:24, t:'transport', l:'Потяг Київ → Краків (нічний)'}
+  ]},
+  { date: '15.05 Пт', title: 'Краків → TSF → Венеція', items: [
+    {s:6, e:11.33, t:'transport', l:'Потяг Київ → Краків'},
+    {s:11.33, e:12, t:'transport', l:'SKA1 Kraków Gł. → Centrum'},
+    {s:12, e:12.75, t:'food', l:'Обід: obwarzanek, zapiekanka, pierogi'},
+    {s:12.75, e:14.75, t:'sights', l:'Ринок, Сукеніце, Вавель (зовні)'},
+    {s:14.75, e:15.5, t:'transport', l:'SKA1 Centrum → Аеропорт KRK'},
+    {s:15.5, e:17.58, t:'wait', l:'KRK — реєстрація, безпека, буфер 1.5h'},
+    {s:17.58, e:19.25, t:'flight', l:'FR3037 KRK → TSF (2h05)'},
+    {s:19.25, e:20, t:'transport', l:'Barzi bus TSF → Venezia Tronchetto (€12)'},
+    {s:20, e:20.5, t:'transport', l:'Vaporetto → Cannaregio'},
+    {s:20.5, e:21.5, t:'food', l:'Вечеря: cicchetti + ombra di vino'},
+    {s:21.5, e:24, t:'sleep', l:'Готель у Cannaregio (ніч 1)'}
+  ]},
+  { date: '16.05 Сб', title: 'Венеція (повний день)', items: [
+    {s:6, e:8, t:'sleep', l:'Сон'},
+    {s:8, e:9, t:'food', l:'Сніданок + еспресо у бакаро'},
+    {s:9, e:12, t:'sights', l:'Сан-Марко, Дож, міст Rialto'},
+    {s:12, e:13, t:'food', l:'Обід: sarde in saor, risotto al nero'},
+    {s:13, e:16, t:'sights', l:'Dorsoduro, Accademia, Peggy Guggenheim'},
+    {s:16, e:17.5, t:'sights', l:'Гондола або traghetto + Cannaregio'},
+    {s:17.5, e:19, t:'sights', l:'Захід сонця на Zattere / Fondamenta'},
+    {s:19, e:20.5, t:'food', l:'Вечеря: spaghetti alle vongole'},
+    {s:20.5, e:24, t:'sleep', l:'Готель у Cannaregio (ніч 2)'}
+  ]},
+  { date: '17.05 Нд', title: 'Венеція → VCE → CTA → Сіракузи', items: [
+    {s:6, e:7, t:'sleep', l:'Ранковий збір'},
+    {s:7, e:7.5, t:'food', l:'Каппучино + cornetto'},
+    {s:7.5, e:9, t:'transport', l:'Vaporetto + ATVO bus → VCE (€10)'},
+    {s:9, e:11.25, t:'wait', l:'VCE — реєстрація, буфер 1.5h'},
+    {s:11.25, e:13.08, t:'flight', l:'W4 6513 VCE → CTA (1h50)'},
+    {s:13.08, e:13.75, t:'wait', l:'CTA — зустріч з друзями, авто'},
+    {s:13.75, e:15.5, t:'transport', l:'CTA → Сіракузи (~70 км, ~1h15)'},
+    {s:15.5, e:16, t:'transport', l:'P.Talete — залишаємо авто'},
+    {s:16, e:19, t:'sights', l:'Ortigia: Duomo, Fonte Aretusa, ринок'},
+    {s:19, e:21, t:'food', l:'Вечеря на Ортиджі: pesce, arancini'},
+    {s:21, e:24, t:'sleep', l:'Готель Сіракузи (ніч 1)'}
+  ]},
+  { date: '18.05 Пн', title: 'Сіракузи + Vendicari + Marzamemi', items: [
+    {s:6, e:8, t:'sleep', l:'Сон'},
+    {s:8, e:9, t:'food', l:'Сніданок: granita + brioche'},
+    {s:9, e:10.5, t:'transport', l:'Сіракузи → Vendicari (~50 км)'},
+    {s:10.5, e:13, t:'beach', l:'Calamosche: купання, сніг-клір вода'},
+    {s:13, e:14.5, t:'food', l:'Обід у Marzamemi: тунець, pasta'},
+    {s:14.5, e:16.5, t:'sights', l:'Marzamemi — рибальське село, тоннара'},
+    {s:16.5, e:17.5, t:'transport', l:'Назад до Сіракуз'},
+    {s:17.5, e:19.5, t:'sights', l:'Нео́поліс: Teatro Greco, Ear of Dionysius'},
+    {s:19.5, e:21, t:'food', l:'Вечеря: spaghetti ai ricci or pesce spada'},
+    {s:21, e:24, t:'sleep', l:'Готель Сіракузи (ніч 2)'}
+  ]},
+  { date: '19.05 Вт', title: 'Сіракузи → Таорміна', items: [
+    {s:6, e:8, t:'sleep', l:'Сон'},
+    {s:8, e:9, t:'food', l:'Сніданок'},
+    {s:9, e:11, t:'transport', l:'Сіракузи → Таорміна (~130 км автострада)'},
+    {s:11, e:11.5, t:'transport', l:'P.Lumbi + funivia/shuttle в центр'},
+    {s:11.5, e:13.5, t:'sights', l:'Corso Umberto, Piazza IX Aprile'},
+    {s:13.5, e:15, t:'food', l:'Обід з виглядом на Іонійське море'},
+    {s:15, e:17.5, t:'sights', l:'Teatro Antico — акустика, вид на Етну'},
+    {s:17.5, e:19, t:'beach', l:'Isola Bella — прогулянка/купання'},
+    {s:19, e:20, t:'sights', l:'Захід сонця у Villa Comunale'},
+    {s:20, e:21.5, t:'food', l:'Вечеря: pasta alla Norma, cannoli'},
+    {s:21.5, e:24, t:'sleep', l:'Готель Таорміна'}
+  ]},
+  { date: '20.05 Ср', title: 'Таорміна → Чефалу', items: [
+    {s:6, e:8, t:'sleep', l:'Сон'},
+    {s:8, e:9, t:'food', l:'Сніданок'},
+    {s:9, e:12, t:'transport', l:'Таорміна → Чефалу (~240 км A20, ~2h45)'},
+    {s:12, e:12.5, t:'transport', l:'P.Porta Terra — паркінг'},
+    {s:12.5, e:14, t:'food', l:'Обід біля моря: pesce, couscous'},
+    {s:14, e:16, t:'beach', l:'Spiaggia di Cefalù — купання'},
+    {s:16, e:18.5, t:'sights', l:'Duomo, середньовічна лавандерія, Corso'},
+    {s:18.5, e:19.5, t:'sights', l:'Захід сонця на La Rocca/пляжі'},
+    {s:19.5, e:21.5, t:'food', l:'Вечеря: pasta con le sarde, sfincione'},
+    {s:21.5, e:24, t:'sleep', l:'Готель Чефалу'}
+  ]},
+  { date: '21.05 Чт', title: 'Чефалу → PMO → Відень', items: [
+    {s:6, e:7.5, t:'sleep', l:'Сон'},
+    {s:7.5, e:8, t:'food', l:'Сніданок швидкий'},
+    {s:8, e:9, t:'transport', l:'Чефалу → PMO (~70 км, ~1h)'},
+    {s:9, e:11.75, t:'wait', l:'PMO — здача авто, реєстрація, буфер'},
+    {s:11.75, e:13.25, t:'wait', l:'Гейт, посадка'},
+    {s:13.25, e:15.25, t:'flight', l:'FR7317 PMO → VIE (2h00)'},
+    {s:15.25, e:16, t:'transport', l:'Railjet VIE → Wien Hbf (€4.40, 15 хв)'},
+    {s:16, e:19, t:'sights', l:'Відень: Ring, Stephansdom, Hofburg'},
+    {s:19, e:21, t:'food', l:'Вечеря: Wiener Schnitzel, Sachertorte'},
+    {s:21, e:24, t:'sleep', l:'Готель Відень / нічний переїзд до Žilina'}
+  ]}
+];
+
+// Render hour labels
+const hoursEl = document.getElementById('gantt-hours');
+for (let h = H_START; h <= H_END; h++) {
+  const tick = document.createElement('div');
+  tick.className = 'absolute top-0 h-full border-l border-slate-200 text-[10px] pl-1';
+  tick.style.left = pct(h) + '%';
+  tick.textContent = String(h).padStart(2,'0');
+  hoursEl.appendChild(tick);
+}
+
+// Render rows
+const body = document.getElementById('gantt-body');
+DAYS.forEach((day, idx) => {
+  const row = document.createElement('div');
+  row.className = 'flex border-b border-slate-200 ' + (idx % 2 ? 'bg-slate-50/50' : 'bg-white');
+
+  const label = document.createElement('div');
+  label.className = 'w-28 shrink-0 px-2 py-2 border-r border-slate-200';
+  label.innerHTML = '<div class="text-xs font-bold text-slate-700">' + day.date + '</div><div class="text-[10px] text-slate-500 leading-tight">' + day.title + '</div>';
+  row.appendChild(label);
+
+  const track = document.createElement('div');
+  track.className = 'flex-1 relative h-14';
+  // hour grid lines
+  for (let h = H_START + 1; h < H_END; h++) {
+    const line = document.createElement('div');
+    line.className = 'absolute top-0 bottom-0 border-l border-slate-100';
+    line.style.left = pct(h) + '%';
+    track.appendChild(line);
+  }
+  // bars
+  day.items.forEach(it => {
+    const bar = document.createElement('div');
+    const color = COLORS[it.t] || 'bg-slate-300';
+    bar.className = 'absolute top-2 h-10 rounded ' + color + ' text-white text-[9px] px-1 py-0.5 overflow-hidden cursor-help hover:ring-2 hover:ring-offset-1 hover:ring-slate-400 transition';
+    bar.style.left = pct(it.s) + '%';
+    bar.style.width = (pct(it.e) - pct(it.s)) + '%';
+    bar.title = fmt(it.s) + '–' + fmt(it.e) + ' · ' + it.l;
+    bar.textContent = it.l;
+    track.appendChild(bar);
+  });
+  row.appendChild(track);
+  body.appendChild(row);
+});
+</script>
+</body>
+</html>
